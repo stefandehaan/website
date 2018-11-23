@@ -1,8 +1,12 @@
 from django.http import HttpResponse
+from django.template import loader
+from .models import Album, Song
 
 
 def index(request):
-    return HttpResponse("<h1> this is the music app homepage</h1>")
+    all_albums = Album.objects.all()
+    template = loader.get_template('')
+    return HttpResponse(html)
 
 
 def detail(request, album_id):
