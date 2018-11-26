@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^(?P<album_id>[0-9]+)/$', views.detail, name="detail"),
 
     # API for favourite a song /music/:id/favourite/
-    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name="favourite"),
+    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name="favorite"),
 ]
