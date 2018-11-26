@@ -5,11 +5,11 @@ app_name = 'music'
 
 urlpatterns = [
     # Home page /music/
-    url(r'^$', views.index, name="index"),
+    url(r'^$', views.IndexView.as_view(), name="index"),
 
     # Album detail /music/:id/
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name="detail"),
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name="detail"),
 
     # API for favourite a song /music/:id/favourite/
-    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name="favorite"),
+    url('album/add/$', views.AlbumCreate.as_view(), name="album-add")
 ]

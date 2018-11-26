@@ -1,40 +1,16 @@
-<!doctype html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'music/base.html' %}
+{% block title %}Album Details{% endblock %}
+{% block body %}
 
-<img src="{{ album.album_logo }}" alt="">
+    <img src="{{ album.album_logo }}" alt="">
 <h1>{{ album.album_title }}</h1>
 <h3>{{ album.artist }}</h3>
 
 {% if error_message %}
-
     <p><strong>{{ error_message }}</strong></p>
-
 {% endif %}
+{% endblock %}
 
-<form action="{% url 'music:favorite' album.id %}" method="post" accept-charset="utf-8">
-    {% csrf_token %}
-    {% for song in album.song_set.all %}
-        <label for="song {{ forloop.counter }}">
-        <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
-        {{song.song_title}}
-        {% if song.is_favorite %}
-        <img src="https://cdn4.iconfinder.com/data/icons/Sizicons/16x16/star_blue.png" alt="fav_star">
-            {% endif %}
-        </label> <br>
-    {% endfor %}
-    <input type="submit" value="Favorite"></input>
-</form>
-
-</body>
-</html>
 
 
 
